@@ -6,4 +6,13 @@ const imagekit = new ImageKit({
     urlEndpoint: "https://ik.imagekit.io/w980natj6",
 });
 
- 
+    async function uploadFile(file,fileName) {
+        const response = await imagekit.upload({
+            file: file,
+            fileName: fileName,
+            folder:"cohort-ai-social"
+        });
+        return response;
+    }
+
+    module.exports = uploadFile;

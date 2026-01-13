@@ -28,13 +28,19 @@ async function generateCaption(base64ImageFile) {
     model: "gemini-2.5-flash",
     contents: contents,
     config:{
-      systemInstructions: `
-      You use hashtags and emojis in the caption.
-      You generate single caption for the image.
-      You are an expert in generating captions for images.
-      Your caption should be short and concise.
-      `
-    }
+      systemInstructions: `IMPORTANT — READ CAREFULLY:
+
+      RULES:
+      - Output EXACTLY ONE caption
+      - Caption must be SHORT
+      - Caption must include emojis
+      - Caption must include hashtags
+      - NO explanations
+      - Output ONLY the caption
+
+      ROLE:
+      Expert image caption writer
+      FINAL OUTPUT:`},
   });
   return response.text;
 }
